@@ -63,7 +63,7 @@ class editHostsDialog:
                     self.host.test()
                 except ValueError, e:
                     GUI_functions.gui_error_dialog ("Invalid entry: %s" 
-                                                    % e.message, self.dialog)
+                                                    % e, self.dialog)
                     continue
                 break
             else:

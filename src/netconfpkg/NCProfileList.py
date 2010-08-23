@@ -139,12 +139,12 @@ class ProfileList(ProfileList_base):
             try:
                 prof.HostsList.load(filename = profdir + '/hosts')
             except ValueError, e:
-                self.error = e.message
+                self.error = str(e)
         else:
             try:
                 prof.HostsList.load(filename = HOSTSCONF)
             except ValueError, e:
-                self.error = e.message
+                self.error = str(e)
 
 
         # FIXME: [183338] use SEARCH not resolv.conf
@@ -187,9 +187,9 @@ class ProfileList(ProfileList_base):
                 prof.HostsList.test()
             except ValueError, e:
                 if not error:
-                    error = "Profile: %s \n%s" % (prof.ProfileName, e.message)
+                    error = "Profile: %s \n%s" % (prof.ProfileName, e)
                 else:
-                    error += e.message
+                    error += str(e)
         if error:
             raise ValueError(error)
         #return

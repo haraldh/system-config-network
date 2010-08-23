@@ -58,10 +58,10 @@ class HostsList(HostsList_base):
                         error = """\
 Error in hostslist
 Wrong: %s in entry %i
-""" % (value_exception.message, num)
+""" % (value_exception, num)
                     else:
                         error += "Wrong: %s in entry %i\n" \
-                            % (value_exception.message, num)
+                            % (value_exception, num)
         if error:
             raise ValueError(error)
     
@@ -97,15 +97,15 @@ Wrong: %s in entry %i
                 try:
                     entry.test()
                 except ValueError, value_exception:
-                    badlines.append((num, value_exception.message))
+                    badlines.append((num, str(value_exception)))
                     if not error:
                         error = """\
 Error while parsing /etc/hosts:
 Wrong %s on line %i
-""" % (value_exception.message, num)                    
+""" % (value_exception, num)                    
                     else:
                         error += "Wrong %s on line %i\n" \
-                            % (value_exception.message, num)
+                            % (value_exception, num)
             else:
                 entry = line
 
