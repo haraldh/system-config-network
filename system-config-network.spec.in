@@ -103,6 +103,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Aug 19 2010 Jiri Popelka <jpopelka@redhat.com>  1.6.1-1
+- version 1.6.1
+- ported to use NSS library (rhbz #348321)
+- /etc/modprobe.conf is deprecated (rhbz #589593)
+- typos in spec (rhbz #600633)
+- avoid saving of None values into wvdial.conf (rhbz #601005)
+- read/write PREFIX from/to ifcfg file (rhbz #613801)
+- avoid deprecation warnings (rhbz #626289)
+
 * Tue Mar 16 2010 Jiri Popelka <jpopelka@redhat.com>  1.6.0-2
 - translation update
 - removed kudzu code and requirements (bz #573868)
