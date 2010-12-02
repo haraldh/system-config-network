@@ -14,7 +14,7 @@ BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, gl
 BuildRequires: gcc, desktop-file-utils, perl-XML-Parser, intltool
 Requires: %{name}-tui = %{version}-%{release}
 Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
-Requires: usermode-gtk, /usr/bin/htmlview, gnome-python2-gnome, gnome-python2-bonobo
+Requires: usermode-gtk, xdg-utils, gnome-python2-gnome, gnome-python2-bonobo
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
@@ -103,6 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Dec 02 2010 Jiri Popelka <jpopelka@redhat.com>  1.6.2-1
+- translation update (rhbz #659130)
+
 * Thu Aug 19 2010 Jiri Popelka <jpopelka@redhat.com>  1.6.1-1
 - version 1.6.1
 - ported to use NSS library (rhbz #348321)
@@ -111,6 +114,12 @@ rm -rf $RPM_BUILD_ROOT
 - avoid saving of None values into wvdial.conf (rhbz #601005)
 - read/write PREFIX from/to ifcfg file (rhbz #613801)
 - avoid deprecation warnings (rhbz #626289)
+
+* Wed Aug 11 2010 David Malcolm <dmalcolm@redhat.com> - 1.6.0-4
+- recompiling .py files against Python 2.7 (rhbz#623403)
+
+* Wed Jul 17 2010 Rex Dieter <rdieter@fedoraproject.org> 1.6.0-3
+- use xdg-utils instead of hard-coded /usr/bin/htmlview (#614600)
 
 * Tue Mar 16 2010 Jiri Popelka <jpopelka@redhat.com>  1.6.0-2
 - translation update
