@@ -396,7 +396,7 @@ class mainDialog:
             self.test()
         except ValueError, e:
             retval = generic_yesno_dialog(
-                "Errors detected, do you really want to save?\n" + e,
+                "Errors detected, do you really want to save?\n" + str(e),
                 self.dialog)
             if retval == gtk.RESPONSE_NO:
                 return
