@@ -161,12 +161,14 @@ class Device(Device_base):
                  'Type' : 'TYPE',
                  'HardwareAddress' : 'HWADDR',
                  }
+    # The following variables can be in form of for example IPADDRn where n is integer
+    __keydictn = ["IPADDR", "NETMASK", "GATEWAY"]
 
     __intkeydict = {
                     'Mtu' : 'MTU',
                     'Prefix' : 'PREFIX',
                     }
-
+    __intkeydictn = ["PREFIX"]
 
     __boolkeydict = { 
                      'OnBoot' : 'ONBOOT',
@@ -242,13 +244,26 @@ class Device(Device_base):
             confkey = self.__keydict[selfkey]
             if conf.has_key(confkey) and conf[confkey]:
                 setattr(self, selfkey, conf[confkey])
-                #setattr(self, selfkey, conf[confkey])
+            else:
+                # if confkey is for example IPADDR, we should try also IPADDR0, IPADDR1 etc.
+                if confkey in self.__keydictn:
+                    for i in range(10):
+                        confkeyn = confkey+str(i)
+                        if conf.has_key(confkeyn) and len(conf[confkeyn]):
+                            setattr(self, selfkey, conf[confkeyn])
+                            break
 
         for selfkey in self.__intkeydict.keys():
             confkey = self.__intkeydict[selfkey]
             if conf.has_key(confkey) and len(conf[confkey]):
                 setattr(self, selfkey, conf[confkey])
-                #setattr(self, selfkey, int(conf[confkey]))
+            else:
+                if confkey in self.__intkeydictn:
+                    for i in range(10):
+                        confkeyn = confkey+str(i)
+                        if conf.has_key(confkeyn) and len(conf[confkeyn]):
+                            setattr(self, selfkey, conf[confkeyn])
+                            break
 
         for selfkey in self.__boolkeydict.keys():
             confkey = self.__boolkeydict[selfkey]
@@ -422,12 +437,27 @@ class Device(Device_base):
         for selfkey in self.__keydict.keys():
             confkey = self.__keydict[selfkey]
             if hasattr(self, selfkey):
+                if not conf.has_key(confkey) or not len(conf[confkey]):
+                    if confkey in self.__keydictn:
+                        # try also conf[confkey0], conf[confkey1] etc.
+                        for i in range(10):
+                            confkeyn=confkey+str(i)
+                            if conf.has_key(confkeyn) and len(conf[confkeyn]):
+                                confkey = confkeyn
+                                break
                 conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         for selfkey in self.__intkeydict.keys():
             confkey = self.__intkeydict[selfkey]
             if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+                if not conf.has_key(confkey) or not len(conf[confkey]):
+                    if confkey in self.__intkeydictn:
+                        for i in range(10):
+                            confkeyn=confkey+str(i)
+                            if conf.has_key(confkeyn) and len(conf[confkeyn]):
+                                confkey = confkeyn
+                                break
                 conf[confkey] = str(getattr(self, selfkey))
             else: del conf[confkey]
 
