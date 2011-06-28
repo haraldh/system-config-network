@@ -104,24 +104,6 @@ class ConfPwO(ConfPw):
         if self.vars.has_key(key):
             raise AttributeError, key + ' exists'
         ConfPw.__setitem__(self, key, mlist)
-    def getfreeid(self, fieldnum):
-        freeid = 500
-        # first, we try not to re-use id's that have already been assigned.
-        for item in self.vars.keys():
-            mid = int(self.vars[item][fieldnum])
-            if mid >= freeid and mid < 65533: # ignore nobody on some systems
-                freeid = mid + 1
-        if freeid > 65533:
-            # if that didn't work, we go back and find any free id over 500
-            ids = {}
-            for item in self.vars.keys():
-                ids[int(self.vars[item][fieldnum])] = 1
-            i = 500
-            while i < 65535 and ids.has_key(i):
-                i = i + 1
-        if freeid > 65533:
-            raise SystemFull, 'No IDs available'
-        return freeid
 
 class _passwd_reflector:
     # first, we need a helper class...
@@ -233,11 +215,6 @@ class ConfPasswd(ConfPwO):
         officephone, homephone, homedir, shell):
         self.addentry(username, password, uid, gid, ', '.join([fullname,
             office, officephone, homephone, '']), homedir, shell)
-    def getfreeuid(self):
-        try:
-            return self.getfreeid(2)
-        except:
-            raise SystemFull, 'No UIDs available'
 
 
 class _shadow_reflector:
@@ -395,11 +372,6 @@ class ConfGroup(ConfPwO):
         ConfPwO.__init__(self, '/etc/group', 0, 4, _group_reflector)
     def addentry(self, group, password, gid, userlist):
         ConfPwO.addentry_list(self, group, [group, password, gid, userlist])
-    def getfreegid(self):
-        try:
-            return self.getfreeid(2)
-        except:
-            raise SystemFull, 'No GIDs available'
 
     def nameofgid(self, gid):
         try: 
