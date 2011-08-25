@@ -872,9 +872,8 @@ class mainDialog:
                  pw_gid, pw_gecos, pw_dir,
                  pw_shell) = pwd.getpwuid(uid)
 
-            gui_run("/bin/su", [ "su", "-c", 
-                    "/usr/bin/htmlview file://" + NETCONFDIR + 
-                    "/help/index.html", "-", pw_name])
+            gui_run("/usr/bin/xdg-open",
+                    [ "xdg-open", NETCONFDIR + "help/index.html"])
 
             self.help_displayed = False
 
