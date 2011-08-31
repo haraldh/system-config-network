@@ -309,8 +309,9 @@ class DeviceList(Gdtlist):
         cfg = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if cfg.has_key('GATEWAY'):
             del cfg['GATEWAY']
-        if cfg.has_key('GATEWAYDEV'):
-            del cfg['GATEWAYDEV']
+        # bug #602688: don't remove GATEWAYDEV
+        #if cfg.has_key('GATEWAYDEV'):
+        #    del cfg['GATEWAYDEV']
         cfg.write()
 
         self.commit() 
