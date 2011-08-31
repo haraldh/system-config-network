@@ -537,10 +537,6 @@ class Device(Device_base):
                     rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
-        else:
-            # remove route file, if no routes defined
-            unlink(getRoot() + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
-            unlink(getRoot() + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
 
         # remove empty gateway entries
         if not self.Gateway:
