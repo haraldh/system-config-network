@@ -431,6 +431,8 @@ def hardware_hydrate(xml, device):
         xml.get_widget("hardwareMACEntry").set_sensitive(False)
         xml.get_widget("hardwareProbeButton").set_sensitive(False)
 
+    if device.Slave:
+        xml.get_widget("hardwareMACToggle").set_sensitive(False)
 
 def hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hwdvOmenu")
