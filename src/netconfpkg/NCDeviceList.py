@@ -67,6 +67,8 @@ class DeviceList(Gdtlist):
             if conf.has_key("NETTYPE"):
                 if conf["NETTYPE"] == "qeth":
                     mtype = QETH
+                if conf["NETTYPE"] == "lcs":
+                    mtype = LCS
 
             del conf
 

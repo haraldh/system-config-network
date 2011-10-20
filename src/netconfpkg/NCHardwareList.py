@@ -627,13 +627,15 @@ class HardwareList(HardwareList_base):
             #
             # FIXME: This is not OO!!
             #
-            if mtype != ETHERNET and mtype != TOKENRING and mtype != QETH:
+            if mtype != ETHERNET and mtype != TOKENRING and mtype != QETH and mtype != LCS:
                 continue
             #print "Testing " + str(mod)
             for hw in self:
                 if (hw.Type == ETHERNET or \
-                    hw.Type == TOKENRING or hw.Type == QETH) and \
-                    hw.Name == mod:
+                    hw.Type == TOKENRING or \
+                        hw.Type == QETH or \
+                        hw.type == LCS) and \
+                        hw.Name == mod:
                     break
             else:
                 #print "Removing " + str(mod)

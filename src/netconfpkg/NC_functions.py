@@ -105,9 +105,10 @@ WIRELESS = 'Wireless'
 TOKENRING = 'TokenRing'
 IPSEC = 'IPSEC'
 QETH = 'QETH'
+LCS = 'LCS'
 HSI = 'HSI'
 
-deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, WIRELESS, TOKENRING, QETH, HSI ]
+deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, WIRELESS, TOKENRING, QETH, LCS, HSI ]
 
 modemDeviceList = [ '/dev/modem', 
                     '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3', 
@@ -410,6 +411,9 @@ def getDeviceType(devname, module = None):
 
     if module == "qeth":
         return QETH
+
+    if module == "lcs":
+        return LCS
 
     UNKNOWN = _('Unknown')
 
