@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-28 16:32+0200\n"
+"POT-Creation-Date: 2012-02-13 12:45+0100\n"
 "PO-Revision-Date: 2010-09-15 21:12+0100\n"
 "Last-Translator: Robert Antoni Buj Gelonch <robert.buj@gmail.com>\n"
 "Language-Team: Catalan <fedora@softcatala.net>\n"
@@ -39,13 +39,13 @@ msgid "%s - network configuration commandline tool"
 msgstr "%s - Eina de configuració de xarxa des de la línia d'ordres"
 
 #: ../src/netconf_cmd.py:110 ../src/netconf_control.py:167
-#: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1710
-#: ../src/netconfpkg/gui/maindialog.py:1726
+#: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1709
+#: ../src/netconfpkg/gui/maindialog.py:1725
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
 
 #: ../src/netconf_cmd.py:111 ../src/netconf_control.py:168
-#: ../src/netconfpkg/gui/maindialog.py:1711
+#: ../src/netconfpkg/gui/maindialog.py:1710
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -125,7 +125,7 @@ msgstr ""
 "l'entorn gràfic. Inicieu la interfície gràfica d'usuari o configureu la\n"
 "variable DISPLAY.\n"
 
-#: ../src/netconf_control.py:192 ../src/netconfpkg/gui/maindialog.py:1730
+#: ../src/netconf_control.py:192 ../src/netconfpkg/gui/maindialog.py:1729
 msgid ""
 "This software is distributed under the GPL. \n"
 "Please Report bugs to Red Hat's Bug Tracking \n"
@@ -339,6 +339,7 @@ msgstr "_Avançat"
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:6
 #: ../src/netconfpkg/gui/QethConfig.glade.h:6
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:26
@@ -347,6 +348,7 @@ msgstr "_General"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:7
 #: ../src/netconfpkg/gui/QethConfig.glade.h:7
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "_Hardware Device"
@@ -380,6 +382,7 @@ msgstr "Nom del _proveïdor:"
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:9
 #: ../src/netconfpkg/gui/QethConfig.glade.h:9
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:30
@@ -482,6 +485,7 @@ msgid "Internet Provider"
 msgstr "Proveïdor d'Internet"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:1
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:1
 #: ../src/netconfpkg/gui/QethConfig.glade.h:1
 msgid "Allow all _users to enable and disable the device"
 msgstr ""
@@ -492,22 +496,26 @@ msgid "Controlled by _NetworkManager"
 msgstr "Controlat per _NetworkManager"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:3
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:2
 #: ../src/netconfpkg/gui/QethConfig.glade.h:2
 msgid "Enable IPv_6 configuration for this interface"
 msgstr "Habilita la configuració IPv_6 per a aquesta interfície"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:4
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:4
 #: ../src/netconfpkg/gui/QethConfig.glade.h:4
 msgid "_Activate device when computer starts"
 msgstr "_Activa el dispositiu quan l'ordinador s'iniciï"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:5
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:5
 #: ../src/netconfpkg/gui/QethConfig.glade.h:5
 msgid "_Activate device when parent device starts"
 msgstr "_Activa el dispositiu quan el dispositiu pare s'iniciï"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:6
 #: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:8
 #: ../src/netconfpkg/gui/QethConfig.glade.h:8
 msgid "_Nickname:"
 msgstr "Sobre_nom:"
@@ -652,6 +660,7 @@ msgstr "PPP sinc"
 #. FIXME: Bad style for translation
 #: ../src/netconfpkg/gui/DialupDruid.py:240
 #: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:210
 #: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:147
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:221
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:218
@@ -933,6 +942,7 @@ msgstr "Afegeix / Edita el registre de noms d'ordinadors"
 
 #. FIXME: Bad style for translation
 #: ../src/netconfpkg/gui/edithosts.glade.h:2
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:222
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:235
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:232
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:215
@@ -1117,11 +1127,13 @@ msgstr ""
 "Entreu un índex per al paràmetre de seguretat únic entre 256 i 4294967295."
 
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:3
 #: ../src/netconfpkg/gui/QethConfig.glade.h:3
 msgid "Ethernet Device"
 msgstr "Dispositiu ethernet"
 
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:8
 #: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:8
 msgid "Select Ethernet Adapter"
 msgstr "Selecciona l'adaptador ethernet"
@@ -1135,6 +1147,8 @@ msgstr "_Adaptador:"
 
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:9
 #: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:9
 #: ../src/netconfpkg/gui/QethHardware.glade.h:9
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
@@ -1143,12 +1157,14 @@ msgid "_Device:"
 msgstr "_Dispositiu:"
 
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:7
 #: ../src/netconfpkg/gui/QethHardware.glade.h:7
 #: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
 msgid "Network Adapters Configuration"
 msgstr "Configuració dels adaptadors de xarxa"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
@@ -1156,16 +1172,19 @@ msgid "Configure Network Settings"
 msgstr "Configura els paràmetres de xarxa"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:2
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:2
 msgid "Create Ethernet Device"
 msgstr "Crea un dispositiu ethernet"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:4
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:4
 msgid "Ethernet card"
 msgstr "Targeta ethernet"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:6
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:6
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
@@ -1173,6 +1192,7 @@ msgid "MTU:"
 msgstr "MTU:"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:7
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:7
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -1183,11 +1203,13 @@ msgstr ""
 "de 1492"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:8
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:8
 msgid "Select Ethernet Device"
 msgstr "Selecciona el dispositiu Ethernet"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:9
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:9
 msgid "Select the ethernet card you want to configure:"
 msgstr "Seleccioneu la targeta ethernet que desitgeu configurar:"
@@ -1261,6 +1283,7 @@ msgstr "Anell de testimoni"
 #: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/maindialog.glade.h:9
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
+#: ../src/netconfpkg/tui/NCLcsInterface.py:126
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:129
@@ -1279,6 +1302,7 @@ msgstr "<b>Protocol de canal D</b>"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:1
 #: ../src/netconfpkg/gui/QethHardware.glade.h:1
 msgid "<b>Resources</b>"
 msgstr "<b>Recursos</b>"
@@ -1329,6 +1353,128 @@ msgstr "<b>Protocol del canal D</b>"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:8
 msgid "ISDN Adapters Configuration"
 msgstr "Configuració dels adaptadors de XDSI"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:2
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethHardware.glade.h:2
+msgid "D_ata Device Bus ID:"
+msgstr "ID del bus de _dades del dispositiu:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/QethHardware.glade.h:3
+msgid "Enter generic options (i.e. LAYER2=1 PORTNO=0)"
+msgstr "Introduïu les opcions genèriques (per exemple LAYER2=1 PORTNO=0)"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:4
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethHardware.glade.h:4
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
+msgid "Enter the MAC address (i.e. 00:13:A9:47:5A:B2)"
+msgstr "Introduïu l'adreça MAC (per exemple 00:13:A9:47:5A:B2)"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:5
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/QethHardware.glade.h:5
+msgid "For Example 0.0.0600"
+msgstr "Per exemple: 0.0.0600"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:6
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethHardware.glade.h:6
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
+msgid "MAC Address:"
+msgstr "Adreça MAC:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:8
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/QethHardware.glade.h:8
+msgid "Options:"
+msgstr "Opcions:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:7
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
+msgid "Resource"
+msgstr "Recurs"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:10
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:10
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:10
+#: ../src/netconfpkg/gui/QethHardware.glade.h:10
+msgid "_Read Device Bus ID:"
+msgstr "ID del _bus de lectura del dispositiu:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:11
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/QethHardware.glade.h:11
+msgid "_Write Device Bus ID:"
+msgstr "_ID del bus d'escriptura del dispositiu:"
+
+#: ../src/netconfpkg/gui/LcsHardware.py:96
+#: ../src/netconfpkg/gui/NCPluginQethHardware.py:87
+#, python-format
+msgid ""
+"Do you want to deactive interface %s first?\n"
+"Otherwise saving changes may have unwanted side effects."
+msgstr ""
+"Voleu primer desactivar la interfície %s first?\n"
+"En qualsevol altre cas desant els canvis poc provocar efectes no desitjats."
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:116
+#, fuzzy
+msgid "Lcs connection"
+msgstr "Connexió xDSL"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:122
+#, fuzzy
+msgid "Create a new lcs connection."
+msgstr "Crea una connexió sense fils."
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:191
+#, fuzzy
+msgid "Other LCS Device"
+msgstr "Altres dispositius QETH"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:211
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
+msgid "Device:"
+msgstr "Dispositiu:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:223
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
+msgid "Subnet mask:"
+msgstr "Màscara de subxarxa:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:224
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:235
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
+msgid "Default gateway address:"
+msgstr "Adreça de la passarel·la d'accés per defecte:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:226
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:238
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:349
+msgid "Automatically obtain IP address settings with:"
+msgstr "Obtén automàticament els paràmetres de l'adreça IP amb:"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:1
 msgid "Activate the selected device, calling ifup <device>."
@@ -1615,117 +1761,117 @@ msgstr "S'han detectat errors, esteu segur que voleu sortir?"
 msgid "Do you want to save your changes?"
 msgstr "Voleu desar els canvis?"
 
-#: ../src/netconfpkg/gui/maindialog.py:929
+#: ../src/netconfpkg/gui/maindialog.py:928
 msgid "The Loopback device can not be edited!"
 msgstr "No es pot editar el dispositiu loopback."
 
-#: ../src/netconfpkg/gui/maindialog.py:933
+#: ../src/netconfpkg/gui/maindialog.py:932
 msgid "Edit device..."
 msgstr "Edita el dispositiu..."
 
-#: ../src/netconfpkg/gui/maindialog.py:970
+#: ../src/netconfpkg/gui/maindialog.py:969
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "No es pot editar el dispositiu de tipus %s."
 
-#: ../src/netconfpkg/gui/maindialog.py:990
+#: ../src/netconfpkg/gui/maindialog.py:989
 msgid "The Loopback device can not be removed!"
 msgstr "No es pot suprimir el dispositiu loopback."
 
-#: ../src/netconfpkg/gui/maindialog.py:994
+#: ../src/netconfpkg/gui/maindialog.py:993
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Esteu segur que voleu suprimir el dispositiu \"%s\"?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1027
-#: ../src/netconfpkg/gui/maindialog.py:1062
-#: ../src/netconfpkg/gui/maindialog.py:1804
-#: ../src/netconfpkg/gui/maindialog.py:1832
+#: ../src/netconfpkg/gui/maindialog.py:1026
+#: ../src/netconfpkg/gui/maindialog.py:1061
+#: ../src/netconfpkg/gui/maindialog.py:1803
+#: ../src/netconfpkg/gui/maindialog.py:1831
 msgid "You have made some changes in your configuration."
 msgstr "Heu fet alguns canvis en la configuració."
 
-#: ../src/netconfpkg/gui/maindialog.py:1028
+#: ../src/netconfpkg/gui/maindialog.py:1027
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Per tal d'activar el dispositiu de xarxa %s, s'han de desar els canvis."
 
-#: ../src/netconfpkg/gui/maindialog.py:1030
-#: ../src/netconfpkg/gui/maindialog.py:1065
-#: ../src/netconfpkg/gui/maindialog.py:1807
-#: ../src/netconfpkg/gui/maindialog.py:1835
+#: ../src/netconfpkg/gui/maindialog.py:1029
+#: ../src/netconfpkg/gui/maindialog.py:1064
+#: ../src/netconfpkg/gui/maindialog.py:1806
+#: ../src/netconfpkg/gui/maindialog.py:1834
 msgid "Do you want to continue?"
 msgstr "Voleu continuar?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1063
+#: ../src/netconfpkg/gui/maindialog.py:1062
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr ""
 "Per tal de desactivar el dispositiu de xarxa %s, s'han de desar els canvis."
 
-#: ../src/netconfpkg/gui/maindialog.py:1194
+#: ../src/netconfpkg/gui/maindialog.py:1193
 msgid "The Loopback device can not be disabled!"
 msgstr "No es pot inhabilitar el dispositiu loopback."
 
-#: ../src/netconfpkg/gui/maindialog.py:1462
-#: ../src/netconfpkg/gui/maindialog.py:1540
+#: ../src/netconfpkg/gui/maindialog.py:1461
+#: ../src/netconfpkg/gui/maindialog.py:1539
 msgid "The name may only contain letters and digits!"
 msgstr "El nom només pot contenir lletres i dígits."
 
-#: ../src/netconfpkg/gui/maindialog.py:1467
-#: ../src/netconfpkg/gui/maindialog.py:1545
+#: ../src/netconfpkg/gui/maindialog.py:1466
+#: ../src/netconfpkg/gui/maindialog.py:1544
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "El perfil no es pot anomenar «%s»."
 
-#: ../src/netconfpkg/gui/maindialog.py:1473
-#: ../src/netconfpkg/gui/maindialog.py:1551
+#: ../src/netconfpkg/gui/maindialog.py:1472
+#: ../src/netconfpkg/gui/maindialog.py:1550
 msgid "The profile name already exists!"
 msgstr "El nom del perfil ja existeix."
 
-#: ../src/netconfpkg/gui/maindialog.py:1518
+#: ../src/netconfpkg/gui/maindialog.py:1517
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "No es pot reanomenar el perfil «%s»."
 
-#: ../src/netconfpkg/gui/maindialog.py:1566
+#: ../src/netconfpkg/gui/maindialog.py:1565
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "No es pot suprimir el perfil «%s»."
 
-#: ../src/netconfpkg/gui/maindialog.py:1572
+#: ../src/netconfpkg/gui/maindialog.py:1571
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Esteu segur que voleu suprimir el perfil «%s»?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1647
+#: ../src/netconfpkg/gui/maindialog.py:1646
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "No hi ha res per editar, o encara no es pot editar aquest tipus."
 
-#: ../src/netconfpkg/gui/maindialog.py:1665
+#: ../src/netconfpkg/gui/maindialog.py:1664
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Esteu segur que voleu suprimir «%s»?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1678
+#: ../src/netconfpkg/gui/maindialog.py:1677
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Voleu suprimir tots els dispositius que utilitzaven «%s»?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1729
+#: ../src/netconfpkg/gui/maindialog.py:1728
 msgid "translator_credits"
 msgstr ""
 "Xavier Giró <xgiro@gps.tsc.upc.es>\n"
 "Josep Puigdemont i Casamajó  <josep.puigdemont@gmail.com>\n"
 "Agustí Grau <fletxa@gmail.com>"
 
-#: ../src/netconfpkg/gui/maindialog.py:1805
+#: ../src/netconfpkg/gui/maindialog.py:1804
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "Per tal d'activar la connexió IPsec %s, s'han de desar els canvis."
 
-#: ../src/netconfpkg/gui/maindialog.py:1833
+#: ../src/netconfpkg/gui/maindialog.py:1832
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "Per tal de desactivar la connexió IPsec %s, s'han de desar els canvis."
@@ -1737,7 +1883,7 @@ msgstr "<b>Propietats del mòdem</b>"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:2
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/NC_functions.py:141
+#: ../src/netconfpkg/NC_functions.py:142
 msgid "Hardware (CRTSCTS)"
 msgstr "Maquinari (CRTSCTS)"
 
@@ -1775,7 +1921,7 @@ msgstr "_Volum del mòdem:"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:151 ../src/netconfpkg/NC_functions.py:143
+#: ../src/netconfpkg/NCDialup.py:151 ../src/netconfpkg/NC_functions.py:144
 msgid "None"
 msgstr "Cap"
 
@@ -1788,7 +1934,7 @@ msgstr "Inactiu"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:10
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/NC_functions.py:142
+#: ../src/netconfpkg/NC_functions.py:143
 msgid "Software (XON/XOFF)"
 msgstr "Programari (XON/XOFF)"
 
@@ -1861,8 +2007,8 @@ msgstr "Configuració per al marcatge directe del mòdem"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:76 ../src/netconfpkg/NCDevice.py:353
-#: ../src/netconfpkg/NC_functions.py:414
+#: ../src/netconfpkg/NCDeviceList.py:78 ../src/netconfpkg/NCDevice.py:353
+#: ../src/netconfpkg/NC_functions.py:418
 #: ../src/netconfpkg/NCHardwareList.py:432 ../src/netconfpkg/NCHardware.py:132
 msgid "Unknown"
 msgstr "Desconegut"
@@ -1878,34 +2024,6 @@ msgstr "Crea una nova connexió ethernet."
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:202
 msgid "Other Ethernet Card"
 msgstr "Una altra targeta ethernet"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
-msgid "Device:"
-msgstr "Dispositiu:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
-msgid "Subnet mask:"
-msgstr "Màscara de subxarxa:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:235
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
-msgid "Default gateway address:"
-msgstr "Adreça de la passarel·la d'accés per defecte:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:238
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:349
-msgid "Automatically obtain IP address settings with:"
-msgstr "Obtén automàticament els paràmetres de l'adreça IP amb:"
 
 #: ../src/netconfpkg/gui/NCPluginIsdnInterface.py:86
 msgid "ISDN connection"
@@ -1968,15 +2086,6 @@ msgstr "S'estan buscant mòdems, espereu..."
 #: ../src/netconfpkg/gui/NCPluginModemInterface.py:140
 msgid "No modem was found on your system."
 msgstr "No s'ha trobat cap mòdem al sistema."
-
-#: ../src/netconfpkg/gui/NCPluginQethHardware.py:87
-#, python-format
-msgid ""
-"Do you want to deactive interface %s first?\n"
-"Otherwise saving changes may have unwanted side effects."
-msgstr ""
-"Voleu primer desactivar la interfície %s first?\n"
-"En qualsevol altre cas desant els canvis poc provocar efectes no desitjats."
 
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:119
 msgid "Qeth connection"
@@ -2273,52 +2382,6 @@ msgstr "Tipus de dispositiu"
 msgid "Select Device Type"
 msgstr "Seleccioneu el tipus de dispositiu"
 
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/QethHardware.glade.h:2
-msgid "D_ata Device Bus ID:"
-msgstr "ID del bus de _dades del dispositiu:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/QethHardware.glade.h:3
-msgid "Enter generic options (i.e. LAYER2=1 PORTNO=0)"
-msgstr "Introduïu les opcions genèriques (per exemple LAYER2=1 PORTNO=0)"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/QethHardware.glade.h:4
-#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
-msgid "Enter the MAC address (i.e. 00:13:A9:47:5A:B2)"
-msgstr "Introduïu l'adreça MAC (per exemple 00:13:A9:47:5A:B2)"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/QethHardware.glade.h:5
-msgid "For Example 0.0.0600"
-msgstr "Per exemple: 0.0.0600"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/QethHardware.glade.h:6
-#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
-msgid "MAC Address:"
-msgstr "Adreça MAC:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/QethHardware.glade.h:8
-msgid "Options:"
-msgstr "Opcions:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
-msgid "Resource"
-msgstr "Recurs"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:10
-#: ../src/netconfpkg/gui/QethHardware.glade.h:10
-msgid "_Read Device Bus ID:"
-msgstr "ID del _bus de lectura del dispositiu:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/QethHardware.glade.h:11
-msgid "_Write Device Bus ID:"
-msgstr "_ID del bus d'escriptura del dispositiu:"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
 msgstr "A_dreça:"
@@ -2511,7 +2574,7 @@ msgstr "La màscara de xarxa no està en el format correcte"
 msgid "Gateway is not in the correct format"
 msgstr "La passarel·la no està en el format correcte"
 
-#: ../src/netconfpkg/gui/sharedtcpip.py:446
+#: ../src/netconfpkg/gui/sharedtcpip.py:448
 msgid "MAC address is not in the correct format"
 msgstr "L'adreça MAC no està en el format correcte"
 
@@ -2795,11 +2858,11 @@ msgstr "Selecciona un dispositiu sense fils"
 msgid "Select the wireless card you want to configure:"
 msgstr "Seleccioneu la targeta sense fils que vulgueu configurar:"
 
-#: ../src/netconfpkg/NCDeviceList.py:137
+#: ../src/netconfpkg/NCDeviceList.py:139
 msgid "Changed the following Nicknames due to the initscripts:\n"
 msgstr "Els scripts de l'inici del sistema han canviat aquests sobrenoms:\n"
 
-#: ../src/netconfpkg/NCDeviceList.py:140
+#: ../src/netconfpkg/NCDeviceList.py:142
 msgid "Nicknames changed"
 msgstr "Sobrenoms canviats"
 
@@ -2808,35 +2871,35 @@ msgstr "Sobrenoms canviats"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, no s'ha especificat cap dispositiu o l'àlies no és un nombre."
 
-#: ../src/netconfpkg/NCDevice.py:571
+#: ../src/netconfpkg/NCDevice.py:567
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "S'està activant el dispositiu de xarxa..."
 
-#: ../src/netconfpkg/NCDevice.py:572
+#: ../src/netconfpkg/NCDevice.py:568
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "S'està activant el dispositiu de xarxa %s, espereu..."
 
-#: ../src/netconfpkg/NCDevice.py:574
+#: ../src/netconfpkg/NCDevice.py:570
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "No es pot activar el dispositiu de xarxa %s.\n"
 
-#: ../src/netconfpkg/NCDevice.py:591
+#: ../src/netconfpkg/NCDevice.py:587
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "S'està desactivant el dispositiu de xarxa..."
 
-#: ../src/netconfpkg/NCDevice.py:592
+#: ../src/netconfpkg/NCDevice.py:588
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "S'està desactivant el dispositiu de xarxa %s, espereu..."
 
-#: ../src/netconfpkg/NCDevice.py:594
+#: ../src/netconfpkg/NCDevice.py:590
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3141,28 +3204,28 @@ msgstr "Comú"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:133
+#: ../src/netconfpkg/NC_functions.py:134
 msgid "Active"
 msgstr "Actiu"
 
-#: ../src/netconfpkg/NC_functions.py:134
+#: ../src/netconfpkg/NC_functions.py:135
 msgid "Inactive"
 msgstr "Inactiu"
 
-#: ../src/netconfpkg/NC_functions.py:228
+#: ../src/netconfpkg/NC_functions.py:229
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Voleu instal·lar els següents paquets informàtics necessaris pel sistema?"
 
-#: ../src/netconfpkg/NC_functions.py:240
+#: ../src/netconfpkg/NC_functions.py:241
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
 "Heu d'instal·lar els següents paquets informàtics ja que són necessaris pel "
 "sistema."
 
-#: ../src/netconfpkg/NC_functions.py:774 ../src/netconfpkg/NC_functions.py:785
+#: ../src/netconfpkg/NC_functions.py:778 ../src/netconfpkg/NC_functions.py:789
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3173,7 +3236,7 @@ msgstr ""
 "%s:\n"
 "%s."
 
-#: ../src/netconfpkg/NC_functions.py:814
+#: ../src/netconfpkg/NC_functions.py:818
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3186,7 +3249,7 @@ msgstr ""
 "a %s:\n"
 "%s."
 
-#: ../src/netconfpkg/NC_functions.py:824
+#: ../src/netconfpkg/NC_functions.py:828
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3199,7 +3262,7 @@ msgstr ""
 "amb %s:\n"
 "%s."
 
-#: ../src/netconfpkg/NC_functions.py:834
+#: ../src/netconfpkg/NC_functions.py:838
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3212,7 +3275,7 @@ msgstr ""
 "a %s:\n"
 "%s."
 
-#: ../src/netconfpkg/NC_functions.py:842
+#: ../src/netconfpkg/NC_functions.py:846
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3221,7 +3284,7 @@ msgstr ""
 "S'ha produït un error en crear el directori.\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:987
+#: ../src/netconfpkg/NC_functions.py:991
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "S'està enllaçant %s als dispositius i s'està afegint al perfil %s."
@@ -3308,6 +3371,90 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "S'ha produït un error en suprimir %(file)s: %(errormsg)."
 
+#: ../src/netconfpkg/tui/NCLcsInterface.py:125
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
+msgid "Name"
+msgstr "Nom"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:127
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:130
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
+msgid "Use DHCP"
+msgstr "Utilitza DHCP"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:128
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:131
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
+msgid "Static IP"
+msgstr "IP estàtica"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:129
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:132
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
+msgid "Netmask"
+msgstr "Màscara de xarxa"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:130
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:133
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
+msgid "Default gateway IP"
+msgstr "Passarel·la d'accés per defecte"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:131
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:134
+msgid "Read Device Bus ID"
+msgstr "ID del bus de lectura del dispositiu"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:132
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:135
+msgid "Data Device Bus ID"
+msgstr "ID del bus de dades del dispositiu"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:133
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:136
+msgid "Write Device Bus ID"
+msgstr "ID del bus d'escriptura del dispositiu"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:134
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:138
+msgid "Options"
+msgstr "Opcions"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:135
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:139
+msgid "MAC Address"
+msgstr "Adreça MAC"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCLcsInterface.py:148
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:153
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "D'acord"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:148
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:106
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:154
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:150
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:156
+msgid "Devernet Configuration"
+msgstr "Configuració de Devernet"
+
 #: ../src/netconfpkg/tui/NCPluginDevices.py:58
 msgid "<New Device>"
 msgstr "<Dispositiu nou>"
@@ -3319,16 +3466,6 @@ msgstr "Quin tipus de dispositiu voleu afegir?"
 #: ../src/netconfpkg/tui/NCPluginDevices.py:66
 msgid "Add"
 msgstr "Afegeix"
-
-#: ../src/netconfpkg/tui/NCPluginDevices.py:66
-#: ../src/netconfpkg/tui/NCPluginDevices.py:106
-#: ../src/netconfpkg/tui/NCPluginDNS.py:69
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:154
-#: ../src/netconfpkg/tui/NCTcpIp.py:131
-msgid "Cancel"
-msgstr "Cancel·la"
 
 #: ../src/netconfpkg/tui/NCPluginDevices.py:72
 msgid "QETH"
@@ -3363,26 +3500,9 @@ msgstr "DNS terciari"
 msgid "DNS search path"
 msgstr "Camí de cerca DNS"
 
-#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
-#. dynip.setCallback(useDynamicCheckBox)
-#: ../src/netconfpkg/tui/NCPluginDNS.py:68
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:153
-#: ../src/netconfpkg/tui/NCTcpIp.py:130
-msgid "Ok"
-msgstr "D'acord"
-
 #: ../src/netconfpkg/tui/NCPluginDNS.py:71 ../src/netconf_tui.py:256
 msgid "DNS configuration"
 msgstr "Configuració del DNS"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
-#: ../src/netconfpkg/tui/NCTcpIp.py:113
-msgid "Name"
-msgstr "Nom"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:69
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:69
@@ -3410,50 +3530,6 @@ msgstr "Configuració de la XDSI"
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:72
 msgid "Modem Initstring"
 msgstr "Cadena d'inicialització del mòdem"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:130
-#: ../src/netconfpkg/tui/NCTcpIp.py:115
-msgid "Use DHCP"
-msgstr "Utilitza DHCP"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:131
-#: ../src/netconfpkg/tui/NCTcpIp.py:116
-msgid "Static IP"
-msgstr "IP estàtica"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:132
-#: ../src/netconfpkg/tui/NCTcpIp.py:117
-msgid "Netmask"
-msgstr "Màscara de xarxa"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:133
-#: ../src/netconfpkg/tui/NCTcpIp.py:118
-msgid "Default gateway IP"
-msgstr "Passarel·la d'accés per defecte"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:134
-msgid "Read Device Bus ID"
-msgstr "ID del bus de lectura del dispositiu"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:135
-msgid "Data Device Bus ID"
-msgstr "ID del bus de dades del dispositiu"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:136
-msgid "Write Device Bus ID"
-msgstr "ID del bus d'escriptura del dispositiu"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:138
-msgid "Options"
-msgstr "Opcions"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:139
-msgid "MAC Address"
-msgstr "Adreça MAC"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:156
-msgid "Devernet Configuration"
-msgstr "Configuració de Devernet"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:119
 msgid "Primary DNS Server"

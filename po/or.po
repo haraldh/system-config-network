@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.or\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-28 16:32+0200\n"
+"POT-Creation-Date: 2012-02-13 12:45+0100\n"
 "PO-Revision-Date: 2010-05-11 16:05+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <Translation-team-or@lists.sourceforge.net>\n"
@@ -51,13 +51,13 @@ msgid "%s - network configuration commandline tool"
 msgstr "%s - ନେଟୱାର୍କ ବିନ୍ଯାସ ର ପାଠ୍ଯ ନିର୍ଦ୍ଦେଶ ଉପକରଣ"
 
 #: ../src/netconf_cmd.py:110 ../src/netconf_control.py:167
-#: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1710
-#: ../src/netconfpkg/gui/maindialog.py:1726
+#: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1709
+#: ../src/netconfpkg/gui/maindialog.py:1725
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "ସତ୍ତ୍ବାଧୀକାର (c) ୨୦୦୧-୨୦୦୫ Red Hat, Inc."
 
 #: ../src/netconf_cmd.py:111 ../src/netconf_control.py:168
-#: ../src/netconfpkg/gui/maindialog.py:1711
+#: ../src/netconfpkg/gui/maindialog.py:1710
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -137,7 +137,7 @@ msgstr ""
 "ସାଧନଟି ଚାଲିନଥିଲା. ଦୟାକରି ଆପଣଙ୍କର ଆଲେଖୀକ ଅନ୍ତରାପୃଷ୍ଠକୁ ଆରମ୍ଭକରନ୍ତୁ ଅଥବା ଆପଣଙ୍କର\n"
 "DISPLAY ପ୍ରଚଳକୁ ବିନ୍ୟାସ କରନ୍ତୁ.\n"
 
-#: ../src/netconf_control.py:192 ../src/netconfpkg/gui/maindialog.py:1730
+#: ../src/netconf_control.py:192 ../src/netconfpkg/gui/maindialog.py:1729
 msgid ""
 "This software is distributed under the GPL. \n"
 "Please Report bugs to Red Hat's Bug Tracking \n"
@@ -346,6 +346,7 @@ msgstr "ଉନ୍ନତ (_A)"
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:6
 #: ../src/netconfpkg/gui/QethConfig.glade.h:6
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:26
@@ -354,6 +355,7 @@ msgstr "ସାଧାରଣ (_G)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:7
 #: ../src/netconfpkg/gui/QethConfig.glade.h:7
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "_Hardware Device"
@@ -387,6 +389,7 @@ msgstr "ପ୍ରବନ୍ଧକଙ୍କ ନାମ (_P)"
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:9
 #: ../src/netconfpkg/gui/QethConfig.glade.h:9
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:30
@@ -489,6 +492,7 @@ msgid "Internet Provider"
 msgstr "ଇଣ୍ଟରନେଟ ପ୍ରବନ୍ଧକ"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:1
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:1
 #: ../src/netconfpkg/gui/QethConfig.glade.h:1
 msgid "Allow all _users to enable and disable the device"
 msgstr "ସମସ୍ତ ଚାଳକ ମାନଙ୍କୁ ଉପକରଣ କୁ ସକ୍ରିୟ ଏବଂ ନିଷ୍କ୍ରିୟ କରିବା ର ଅନୁମତି ପ୍ରଦାନ କରନ୍ତୁ (_u)"
@@ -498,22 +502,26 @@ msgid "Controlled by _NetworkManager"
 msgstr "ନେଟୱର୍କ ପରିଚାଳକ ଦ୍ୱାରା ନିୟନ୍ତ୍ରିତ (_N)"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:3
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:2
 #: ../src/netconfpkg/gui/QethConfig.glade.h:2
 msgid "Enable IPv_6 configuration for this interface"
 msgstr "ଏହି ଅନ୍ତରାପ୍ରୁଷ୍ଠ ପାଇଁ IPv_6 ବିନ୍ଯାସ କୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:4
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:4
 #: ../src/netconfpkg/gui/QethConfig.glade.h:4
 msgid "_Activate device when computer starts"
 msgstr "କମ୍ପୁଟର ପ୍ରାରମ୍ଭ ହେବା ସମୟ ରେ ଉପକରଣ କୁ ସକ୍ରିୟଣ କରନ୍ତୁ (_A)"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:5
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:5
 #: ../src/netconfpkg/gui/QethConfig.glade.h:5
 msgid "_Activate device when parent device starts"
 msgstr "ମୂଳ ଉପକରଣ ର ପ୍ରାରମ୍ଭ ସମୟ ରେ ଏହି ଉପକରଣ କୁ ସକ୍ରିୟଣ କରନ୍ତୁ (_A)"
 
 #: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:6
 #: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:8
 #: ../src/netconfpkg/gui/QethConfig.glade.h:8
 msgid "_Nickname:"
 msgstr "ଡାକ ନାମ (_N):"
@@ -659,6 +667,7 @@ msgstr "ସିଙ୍କ PPP"
 #. FIXME: Bad style for translation
 #: ../src/netconfpkg/gui/DialupDruid.py:240
 #: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:210
 #: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:147
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:221
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:218
@@ -944,6 +953,7 @@ msgstr "ଆଧାର ର ଭରଣ କୁ ଯୋଗ/ସମ୍ପାଦନ କର
 
 #. FIXME: Bad style for translation
 #: ../src/netconfpkg/gui/edithosts.glade.h:2
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:222
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:235
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:232
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:215
@@ -1126,11 +1136,13 @@ msgstr ""
 "ଦୟାକରି 256 ଏବଂ 4294967295 ମଧ୍ଯରେ ଗୋଟିଏ ଅନନ୍ଯ ସୁରକ୍ଷା ପାରାମିଟର ଅନୁକ୍ରମଣିକା ଭରଣ କରନ୍ତୁ।"
 
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/LcsConfig.glade.h:3
 #: ../src/netconfpkg/gui/QethConfig.glade.h:3
 msgid "Ethernet Device"
 msgstr "ଇଥରନେଟ ଉପକରଣ"
 
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:8
 #: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:8
 msgid "Select Ethernet Adapter"
 msgstr "ଇଥରନେଟ ଏଡେପ୍ଟର କୁ ଚୟନ କରନ୍ତୁ"
@@ -1144,6 +1156,8 @@ msgstr "ଏଡେପ୍ଟର (_A):"
 
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:9
 #: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:9
 #: ../src/netconfpkg/gui/QethHardware.glade.h:9
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
@@ -1152,12 +1166,14 @@ msgid "_Device:"
 msgstr "ଉପକରଣ (_D):"
 
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:7
 #: ../src/netconfpkg/gui/QethHardware.glade.h:7
 #: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
 msgid "Network Adapters Configuration"
 msgstr "ନେଟୱାର୍କ ଅନୁକୂଳୀତ୍ର ର ବିନ୍ଯାସ"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
@@ -1165,16 +1181,19 @@ msgid "Configure Network Settings"
 msgstr "ନେଟୱାର୍କ ପ୍ରସ୍ତୁତି କୁ ବିନ୍ଯାସ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:2
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:2
 msgid "Create Ethernet Device"
 msgstr "ଇଥରନେଟ ଉପକରଣ କୁ ସ୍ରୁଷ୍ଟି କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:4
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:4
 msgid "Ethernet card"
 msgstr "ଇଥରନେଟ କାର୍ଡ"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:6
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:6
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
@@ -1182,6 +1201,7 @@ msgid "MTU:"
 msgstr "MTU:"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:7
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:7
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -1191,11 +1211,13 @@ msgstr ""
 "s390/s390x ରେ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ବିନ୍ଯାସ ଭାବରେ MTU ର ମୂଲ୍ଯ ୧୪୯୨ ଅଟେ।"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:8
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:8
 msgid "Select Ethernet Device"
 msgstr "ଇଥରନେଟ ଉପକରଣ କୁ ଚୟନ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:9
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:9
 msgid "Select the ethernet card you want to configure:"
 msgstr "ଆପଣ ବିନ୍ଯାସ କରିବାକୁ ଚାହୁଁଥିବା ଇଥରନେଟ କାର୍ଡ କୁ ଚୟନ କରନ୍ତୁ:"
@@ -1269,6 +1291,7 @@ msgstr "ସାଙ୍କେତିକ ବଳୟ"
 #: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/maindialog.glade.h:9
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
+#: ../src/netconfpkg/tui/NCLcsInterface.py:126
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:129
@@ -1287,6 +1310,7 @@ msgstr "<b>ଡି-ଚ୍ଯାନେଲ ପ୍ରୋଟୋକଲ </b>"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:1
 #: ../src/netconfpkg/gui/QethHardware.glade.h:1
 msgid "<b>Resources</b>"
 msgstr "<b>ସାଧନ ମାନ</b>"
@@ -1337,6 +1361,128 @@ msgstr "<b>ଡି ଉପପଥ ପ୍ରୋଟୋକଲ</b>"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:8
 msgid "ISDN Adapters Configuration"
 msgstr "ISDN ଅନୁକୂଳୀତ୍ର ର ବିନ୍ଯାସ"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:2
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethHardware.glade.h:2
+msgid "D_ata Device Bus ID:"
+msgstr "ତଥ୍ୟ ଉପକରଣ ବସ ପରିଚୟ (_a):"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/QethHardware.glade.h:3
+msgid "Enter generic options (i.e. LAYER2=1 PORTNO=0)"
+msgstr "ସାଧାରଣ ବିକଳ୍ପଗୁଡ଼ିକୁ ଭରଣ କରନ୍ତୁ (ଯେପରିକି, LAYER2=1 PORTNO=0)"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:4
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethHardware.glade.h:4
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
+msgid "Enter the MAC address (i.e. 00:13:A9:47:5A:B2)"
+msgstr "MAC ଠିକଣା ଭରଣ କରନ୍ତୁ (ଯେପରିକି, 00:13:A9:47:5A:B2)"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:5
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/QethHardware.glade.h:5
+msgid "For Example 0.0.0600"
+msgstr "ଉଦାହରଣ ସ୍ୱରୂପ 0.0.0600"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:6
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethHardware.glade.h:6
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
+msgid "MAC Address:"
+msgstr "MAC ଠିକଣା:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:8
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/QethHardware.glade.h:8
+msgid "Options:"
+msgstr "ବିକଳ୍ପଗୁଡ଼ିକ:"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:7
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
+msgid "Resource"
+msgstr "ସାଧନ"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:10
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:10
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:10
+#: ../src/netconfpkg/gui/QethHardware.glade.h:10
+msgid "_Read Device Bus ID:"
+msgstr "ଉପକରଣ ବସ ପରିଚୟ ପଢନ୍ତୁ (_R):"
+
+#: ../src/netconfpkg/gui/LcsHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/LcsHardware.glade.h:11
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/QethHardware.glade.h:11
+msgid "_Write Device Bus ID:"
+msgstr "ଉପକରଣ ବସ ପରିଚୟ ଲେଖନ୍ତୁ (_W):"
+
+#: ../src/netconfpkg/gui/LcsHardware.py:96
+#: ../src/netconfpkg/gui/NCPluginQethHardware.py:87
+#, python-format
+msgid ""
+"Do you want to deactive interface %s first?\n"
+"Otherwise saving changes may have unwanted side effects."
+msgstr ""
+"ଆପଣ ପ୍ରଥମେ ଅନ୍ତରାପୃଷ୍ଠ %s କୁ ନିଷ୍କ୍ରିୟ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?\n"
+"ଅନ୍ୟଥା ପରିବର୍ତ୍ତନଗୁଡ଼ିକୁ ସଂରକ୍ଷଣ କରିବା ଫଳରେ ଅବାଞ୍ଛିତ ପାର୍ଶ୍ୱ ପ୍ରଭାବ ଦେଖାଦେଇପାରେ।"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:116
+#, fuzzy
+msgid "Lcs connection"
+msgstr "xDSL ସଂଯୋଗ"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:122
+#, fuzzy
+msgid "Create a new lcs connection."
+msgstr "ଗୋଟିଏ ନୂତନ ବେତାର ସଂଯୋଗ କୁ ସ୍ରୁଷ୍ଟି କରନ୍ତୁ।"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:191
+#, fuzzy
+msgid "Other LCS Device"
+msgstr "ଅନ୍ୟ QETHଟ ଉପକଣଣ"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:211
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
+msgid "Device:"
+msgstr "ଉପକରଣ:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:223
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
+msgid "Subnet mask:"
+msgstr "ସବ-ନେଟ ମାସ୍କ:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:224
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:235
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
+msgid "Default gateway address:"
+msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ଗେଟୱେ ଠିକଣା:"
+
+#: ../src/netconfpkg/gui/LcsInterfaceDruid.py:226
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:238
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:349
+msgid "Automatically obtain IP address settings with:"
+msgstr "ଏହା ସହିତ ସ୍ବୟଂଚାଳିତ ଭାବରେ IP ଠିକଣା ବିନ୍ଯାସକୁ ପ୍ରାପ୍ତ କରୁଅଛି:"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:1
 msgid "Activate the selected device, calling ifup <device>."
@@ -1621,115 +1767,115 @@ msgstr "ତ୍ରୁଟି ଜଣାପଡିଛି, କଣ ଆପଣ ପ୍ର�
 msgid "Do you want to save your changes?"
 msgstr "ଆପଣ ଆପଣଙ୍କ ପରିବର୍ତ୍ତନ କୁ ସଂରକ୍ଷଣ କରିବା ପାଇଁ ଚାହାଁନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:929
+#: ../src/netconfpkg/gui/maindialog.py:928
 msgid "The Loopback device can not be edited!"
 msgstr "ଲୁପ-ବେକ ଯନ୍ତ୍ର କୁ ସମ୍ପାଦିତ କରିହେବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:933
+#: ../src/netconfpkg/gui/maindialog.py:932
 msgid "Edit device..."
 msgstr "ଯନ୍ତ୍ର କୁ ସମ୍ପାଦନ କର..."
 
-#: ../src/netconfpkg/gui/maindialog.py:970
+#: ../src/netconfpkg/gui/maindialog.py:969
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "ଯନ୍ତ୍ର ର %s କୁ ସମ୍ପାଦନ କରି ପାରିବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:990
+#: ../src/netconfpkg/gui/maindialog.py:989
 msgid "The Loopback device can not be removed!"
 msgstr "ଲୁପ-ବେକ ଯନ୍ତ୍ର କୁ ଅପସାରିତ କରିହେବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:994
+#: ../src/netconfpkg/gui/maindialog.py:993
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "ଆପଣ ପ୍ରକ୍ରୁତ ରେ \"%s\" ଯନ୍ତ୍ର କୁ ଅପସାରଣ କରିବା ପାଇଁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1027
-#: ../src/netconfpkg/gui/maindialog.py:1062
-#: ../src/netconfpkg/gui/maindialog.py:1804
-#: ../src/netconfpkg/gui/maindialog.py:1832
+#: ../src/netconfpkg/gui/maindialog.py:1026
+#: ../src/netconfpkg/gui/maindialog.py:1061
+#: ../src/netconfpkg/gui/maindialog.py:1803
+#: ../src/netconfpkg/gui/maindialog.py:1831
 msgid "You have made some changes in your configuration."
 msgstr "ଆପଣ ଆପଣଙ୍କ ବିନ୍ଯାସ ରେ କିଛି ପରିବର୍ତ୍ତନ କରିଛନ୍ତି।"
 
-#: ../src/netconfpkg/gui/maindialog.py:1028
+#: ../src/netconfpkg/gui/maindialog.py:1027
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ସକ୍ରିୟ କରିବା ପାଇଁ, ପରିବର୍ତ୍ତନ ମାନଙ୍କୁ ସଂରକ୍ଷିତ କରିବା ପାଇଁ ହେବ।"
 
-#: ../src/netconfpkg/gui/maindialog.py:1030
-#: ../src/netconfpkg/gui/maindialog.py:1065
-#: ../src/netconfpkg/gui/maindialog.py:1807
-#: ../src/netconfpkg/gui/maindialog.py:1835
+#: ../src/netconfpkg/gui/maindialog.py:1029
+#: ../src/netconfpkg/gui/maindialog.py:1064
+#: ../src/netconfpkg/gui/maindialog.py:1806
+#: ../src/netconfpkg/gui/maindialog.py:1834
 msgid "Do you want to continue?"
 msgstr "ଆପଣ ଆଗକୁ ବଢିବା ପାଇଁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1063
+#: ../src/netconfpkg/gui/maindialog.py:1062
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ନିଷ୍କ୍ରିୟ କରିବା ପାଇଁ, ପରିବର୍ତ୍ତନ ମାନଙ୍କୁ ସଂରକ୍ଷିତ କରିବା ପାଇଁ ହେବ।"
 
-#: ../src/netconfpkg/gui/maindialog.py:1194
+#: ../src/netconfpkg/gui/maindialog.py:1193
 msgid "The Loopback device can not be disabled!"
 msgstr "ଲୁପ-ବେକ ଯନ୍ତ୍ର ଟି ନିଷ୍କ୍ରିୟ ହୋଇ ପାରିବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1462
-#: ../src/netconfpkg/gui/maindialog.py:1540
+#: ../src/netconfpkg/gui/maindialog.py:1461
+#: ../src/netconfpkg/gui/maindialog.py:1539
 msgid "The name may only contain letters and digits!"
 msgstr "ନାମ ଟି କେବଳ ଅକ୍ଷର ଏବଂ ସଂଖ୍ଯା ମାନଙ୍କୁ ଧାରଣ କରିବା ଉଚିତ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1467
-#: ../src/netconfpkg/gui/maindialog.py:1545
+#: ../src/netconfpkg/gui/maindialog.py:1466
+#: ../src/netconfpkg/gui/maindialog.py:1544
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "ରୂପରେଖ ଟି \"%s\" ଦ୍ବାରା ନାମିତ ହୋଇ ପାରିବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1473
-#: ../src/netconfpkg/gui/maindialog.py:1551
+#: ../src/netconfpkg/gui/maindialog.py:1472
+#: ../src/netconfpkg/gui/maindialog.py:1550
 msgid "The profile name already exists!"
 msgstr "ରୂପରେଖ ନାମ ଟି ପୂର୍ବରୁ ଅବସ୍ଥିତ ଅଛି!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1518
+#: ../src/netconfpkg/gui/maindialog.py:1517
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\" ରୂପରେଖ ର ନାମ କୁ ବଦଳାଇ ହେବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1566
+#: ../src/netconfpkg/gui/maindialog.py:1565
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\" ରୂପରେଖ ଟି ଅପସାରିତ ହୋଇ ପାରିବ ନାହିଁ!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1572
+#: ../src/netconfpkg/gui/maindialog.py:1571
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "ଆପଣ ପ୍ରକ୍ରୁତ ରେ \"%s\" ରୂପରେଖ କୁ ଅପସାରଣ କରିବା ପାଇଁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1647
+#: ../src/netconfpkg/gui/maindialog.py:1646
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "କ୍ଷମା କରିବେ, ସେଠାରେ ସମ୍ପାଦନ କରିବା ପାଇଁ କିଛି ନାହିଁ, କିମ୍ବା ଏହି ପ୍ରକାର ଟି ଏପର୍ଯ୍ଯନ୍ତ ଅଦ୍ଯତିତ ହୋଇ "
 "ପାରିବ ନାହିଁ।"
 
-#: ../src/netconfpkg/gui/maindialog.py:1665
+#: ../src/netconfpkg/gui/maindialog.py:1664
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "ଆପଣ ପ୍ରକ୍ରୁତ ରେ \"%s\" କୁ ଅପସାରଣ କରିବା ପାଇଁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1678
+#: ../src/netconfpkg/gui/maindialog.py:1677
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr ""
 "\"%s\" କୁ ବ୍ଯବହାର କରୁଥିବା ସମସ୍ତ ଉପକରଣ ମାନଙ୍କୁ ଆପଣ ପ୍ରକ୍ରୁତ ରେ ଅପସାରଣ କରିବା ପାଇଁ ଚାହୁଁଛନ୍ତି କି?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1729
+#: ../src/netconfpkg/gui/maindialog.py:1728
 msgid "translator_credits"
 msgstr "ଶୁଭ୍ରାଂଶୁ ବେହେରା <arya_subhransu@yahoo.co.in>"
 
-#: ../src/netconfpkg/gui/maindialog.py:1805
+#: ../src/netconfpkg/gui/maindialog.py:1804
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec ସଂଯୋଗ କୁ ସକ୍ରିୟ କରିବା ପାଇଁ, ପରିବର୍ତ୍ତନ ମାନଙ୍କୁ ସଂରକ୍ଷିତ କରିବା ପାଇଁ ହେବ।"
 
-#: ../src/netconfpkg/gui/maindialog.py:1833
+#: ../src/netconfpkg/gui/maindialog.py:1832
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec ସଂଯୋଗ କୁ ନିଷ୍କ୍ରିୟ କରିବା ପାଇଁ, ପରିବର୍ତ୍ତନ ମାନଙ୍କୁ ସଂରକ୍ଷିତ କରିବା ପାଇଁ ହେବ।"
@@ -1741,7 +1887,7 @@ msgstr "<b>ମୋଡେମ ର ଗୁଣଧର୍ମ</b>"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:2
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/NC_functions.py:141
+#: ../src/netconfpkg/NC_functions.py:142
 msgid "Hardware (CRTSCTS)"
 msgstr "ହାର୍ଡୱେର (CRTSCTS)"
 
@@ -1779,7 +1925,7 @@ msgstr "ମୋଡେମ ର ପ୍ରବଳତା (_v):"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:151 ../src/netconfpkg/NC_functions.py:143
+#: ../src/netconfpkg/NCDialup.py:151 ../src/netconfpkg/NC_functions.py:144
 msgid "None"
 msgstr "କିଛି ନୁହେଁ"
 
@@ -1792,7 +1938,7 @@ msgstr "ଅଫ୍"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:10
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/NC_functions.py:142
+#: ../src/netconfpkg/NC_functions.py:143
 msgid "Software (XON/XOFF)"
 msgstr "ସଫଟୱେର (XON/XOFF)"
 
@@ -1865,8 +2011,8 @@ msgstr "ମୋଡେମ ଡାଏଲ-ଅପ ବିନ୍ଯାସ"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:76 ../src/netconfpkg/NCDevice.py:353
-#: ../src/netconfpkg/NC_functions.py:414
+#: ../src/netconfpkg/NCDeviceList.py:78 ../src/netconfpkg/NCDevice.py:353
+#: ../src/netconfpkg/NC_functions.py:418
 #: ../src/netconfpkg/NCHardwareList.py:432 ../src/netconfpkg/NCHardware.py:132
 msgid "Unknown"
 msgstr "ଅଜଣା"
@@ -1882,34 +2028,6 @@ msgstr "ଗୋଟିଏ ନୂତନ ଇଥରନେଟ୍ ସଂଯୋଗ ସ�
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:202
 msgid "Other Ethernet Card"
 msgstr "ଅନ୍ଯାନ୍ଯ ଇଥରନେଟ୍ କାର୍ଡ"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
-msgid "Device:"
-msgstr "ଉପକରଣ:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
-msgid "Subnet mask:"
-msgstr "ସବ-ନେଟ ମାସ୍କ:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:235
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
-msgid "Default gateway address:"
-msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ଗେଟୱେ ଠିକଣା:"
-
-#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
-#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:238
-#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:349
-msgid "Automatically obtain IP address settings with:"
-msgstr "ଏହା ସହିତ ସ୍ବୟଂଚାଳିତ ଭାବରେ IP ଠିକଣା ବିନ୍ଯାସକୁ ପ୍ରାପ୍ତ କରୁଅଛି:"
 
 #: ../src/netconfpkg/gui/NCPluginIsdnInterface.py:86
 msgid "ISDN connection"
@@ -1968,15 +2086,6 @@ msgstr "ମୋଡେମ ମାନଙ୍କ ପାଇଁ ଖୋଜୁଅଛି, �
 #: ../src/netconfpkg/gui/NCPluginModemInterface.py:140
 msgid "No modem was found on your system."
 msgstr "ଆପଣଙ୍କ ତନ୍ତ୍ର ରେ କୌଣସି ମୋଡେମ ମିଳିଲା ନାହିଁ।"
-
-#: ../src/netconfpkg/gui/NCPluginQethHardware.py:87
-#, python-format
-msgid ""
-"Do you want to deactive interface %s first?\n"
-"Otherwise saving changes may have unwanted side effects."
-msgstr ""
-"ଆପଣ ପ୍ରଥମେ ଅନ୍ତରାପୃଷ୍ଠ %s କୁ ନିଷ୍କ୍ରିୟ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?\n"
-"ଅନ୍ୟଥା ପରିବର୍ତ୍ତନଗୁଡ଼ିକୁ ସଂରକ୍ଷଣ କରିବା ଫଳରେ ଅବାଞ୍ଛିତ ପାର୍ଶ୍ୱ ପ୍ରଭାବ ଦେଖାଦେଇପାରେ।"
 
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:119
 msgid "Qeth connection"
@@ -2271,52 +2380,6 @@ msgstr "ଉପକରଣ ର ପ୍ରକାର"
 msgid "Select Device Type"
 msgstr "ଉପକରଣ ର ପ୍ରକାର କୁ ଚୟନ କରନ୍ତୁ"
 
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/QethHardware.glade.h:2
-msgid "D_ata Device Bus ID:"
-msgstr "ତଥ୍ୟ ଉପକରଣ ବସ ପରିଚୟ (_a):"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/QethHardware.glade.h:3
-msgid "Enter generic options (i.e. LAYER2=1 PORTNO=0)"
-msgstr "ସାଧାରଣ ବିକଳ୍ପଗୁଡ଼ିକୁ ଭରଣ କରନ୍ତୁ (ଯେପରିକି, LAYER2=1 PORTNO=0)"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/QethHardware.glade.h:4
-#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
-msgid "Enter the MAC address (i.e. 00:13:A9:47:5A:B2)"
-msgstr "MAC ଠିକଣା ଭରଣ କରନ୍ତୁ (ଯେପରିକି, 00:13:A9:47:5A:B2)"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/QethHardware.glade.h:5
-msgid "For Example 0.0.0600"
-msgstr "ଉଦାହରଣ ସ୍ୱରୂପ 0.0.0600"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/QethHardware.glade.h:6
-#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
-msgid "MAC Address:"
-msgstr "MAC ଠିକଣା:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/QethHardware.glade.h:8
-msgid "Options:"
-msgstr "ବିକଳ୍ପଗୁଡ଼ିକ:"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
-msgid "Resource"
-msgstr "ସାଧନ"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:10
-#: ../src/netconfpkg/gui/QethHardware.glade.h:10
-msgid "_Read Device Bus ID:"
-msgstr "ଉପକରଣ ବସ ପରିଚୟ ପଢନ୍ତୁ (_R):"
-
-#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/QethHardware.glade.h:11
-msgid "_Write Device Bus ID:"
-msgstr "ଉପକରଣ ବସ ପରିଚୟ ଲେଖନ୍ତୁ (_W):"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
 msgstr "ଠିକଣା (_d)"
@@ -2509,7 +2572,7 @@ msgstr "ନେଟୱର୍କ ମୁଖାଟି ସଠିକ ଶୈଳୀରେ
 msgid "Gateway is not in the correct format"
 msgstr "ମୂଖ୍ୟ ନେଟୱର୍କ ଦ୍ୱାର (ଗେଟୱେ) ସଠିକ ଶୈଳୀରେ ନାହିଁ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.py:446
+#: ../src/netconfpkg/gui/sharedtcpip.py:448
 msgid "MAC address is not in the correct format"
 msgstr "MAC ଠିକଣାଟି ସଠିକ ଶୈଳୀରେ ନାହିଁ"
 
@@ -2793,11 +2856,11 @@ msgstr "ବେତାର ଯନ୍ତ୍ର ର ଚୟନ କରନ୍ତୁ"
 msgid "Select the wireless card you want to configure:"
 msgstr "ଆପଣ ବିନ୍ଯାସ କରିବା ପାଇଁ ଚାହୁଁଥିବା ବେତାର ପତ୍ରକ କୁ ଚୟନ କରନ୍ତୁ:"
 
-#: ../src/netconfpkg/NCDeviceList.py:137
+#: ../src/netconfpkg/NCDeviceList.py:139
 msgid "Changed the following Nicknames due to the initscripts:\n"
 msgstr "initscripts ପାଇଁ ନିମ୍ନଲିଖିତ ଡାକ ନାମ ମାନଙ୍କୁ ପରିବର୍ତନ କରି ଦିଆଗଲା:\n"
 
-#: ../src/netconfpkg/NCDeviceList.py:140
+#: ../src/netconfpkg/NCDeviceList.py:142
 msgid "Nicknames changed"
 msgstr "ଡାକ ନାମ ଗୁଡିକ ପରିବର୍ତିତ ହୋଇଗଲା"
 
@@ -2806,35 +2869,35 @@ msgstr "ଡାକ ନାମ ଗୁଡିକ ପରିବର୍ତିତ ହୋ�
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, ଉପକରଣ କୁ ଉଲ୍ଲକ୍ଷିତ କରାଯାଇ ନାହିଁ କିମ୍ବା ଉପନାମ ଟି ଗୋଟିଏ ସଂଖ୍ଯା ନୁହେଁ!"
 
-#: ../src/netconfpkg/NCDevice.py:571
+#: ../src/netconfpkg/NCDevice.py:567
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "ନେଟୱାର୍କ ଉପକରଣ ଟି ସକ୍ରିୟଣ ହେଉଅଛି..."
 
-#: ../src/netconfpkg/NCDevice.py:572
+#: ../src/netconfpkg/NCDevice.py:568
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ସକ୍ରିୟଣ କରୁଅଛି, ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ..."
 
-#: ../src/netconfpkg/NCDevice.py:574
+#: ../src/netconfpkg/NCDevice.py:570
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ସକ୍ରିୟଣ କରି ପାରିବ ନାହିଁ!\n"
 
-#: ../src/netconfpkg/NCDevice.py:591
+#: ../src/netconfpkg/NCDevice.py:587
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "ନେଟୱାର୍କ ଉପକରଣ ଟି ନିଷ୍କ୍ରିୟ ହେଉଅଛି..."
 
-#: ../src/netconfpkg/NCDevice.py:592
+#: ../src/netconfpkg/NCDevice.py:588
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ନିଷ୍କ୍ରିୟ କରୁଅଛି, ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ..."
 
-#: ../src/netconfpkg/NCDevice.py:594
+#: ../src/netconfpkg/NCDevice.py:590
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3139,25 +3202,25 @@ msgstr "ସାଧାରଣ"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:133
+#: ../src/netconfpkg/NC_functions.py:134
 msgid "Active"
 msgstr "ସକ୍ରିୟ"
 
-#: ../src/netconfpkg/NC_functions.py:134
+#: ../src/netconfpkg/NC_functions.py:135
 msgid "Inactive"
 msgstr "ନିଷ୍କ୍ରିୟ"
 
-#: ../src/netconfpkg/NC_functions.py:228
+#: ../src/netconfpkg/NC_functions.py:229
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr "ଆପଣଙ୍କ ତନ୍ତ୍ର ରେ ଆବଶ୍ଯକ, ନିମ୍ନଲିଖିତ ପ୍ଯାକେଜ ମାନଙ୍କୁ, ସ୍ଥାପନ କରିବା ଉତିତ କି?"
 
-#: ../src/netconfpkg/NC_functions.py:240
+#: ../src/netconfpkg/NC_functions.py:241
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "ଆପଣ ନିମ୍ନଲିଖିତ ପ୍ଯାକେଜ ମାନଙ୍କୁ ସ୍ଥାପନ କଲେ, ଯାହାକି ଆପଣଙ୍କ ତନ୍ତ୍ର ରେ ଆବଶ୍ଯକ ହେଉଥିଲା!"
 
-#: ../src/netconfpkg/NC_functions.py:774 ../src/netconfpkg/NC_functions.py:785
+#: ../src/netconfpkg/NC_functions.py:778 ../src/netconfpkg/NC_functions.py:789
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3168,7 +3231,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:814
+#: ../src/netconfpkg/NC_functions.py:818
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3181,7 +3244,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:824
+#: ../src/netconfpkg/NC_functions.py:828
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3194,7 +3257,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:834
+#: ../src/netconfpkg/NC_functions.py:838
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3207,7 +3270,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:842
+#: ../src/netconfpkg/NC_functions.py:846
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3216,7 +3279,7 @@ msgstr ""
 "ଡିରେକ୍ଟୋରି ସ୍ରୁଷ୍ଟି କରିବା ସମୟ ରେ ତ୍ରୁଟି!\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:987
+#: ../src/netconfpkg/NC_functions.py:991
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s କୁ ଉପକରଣ ମାନଙ୍କ ସହିତ ସଂଯୋଗ କରୁଅଛି ଏବଂ ଏହାକୁ %s ରୂପରେଖ ରେ ରଖୁଅଛି।"
@@ -3302,6 +3365,90 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "ଫାଇଲ %(file)s କୁ ଅପସାରଣ କରିବା ସମୟ ରେ ତ୍ରୁଟି: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCLcsInterface.py:125
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
+msgid "Name"
+msgstr "ନାମ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:127
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:130
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
+msgid "Use DHCP"
+msgstr "DHCP ବ୍ଯବହାର କରନ୍ତୁ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:128
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:131
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
+msgid "Static IP"
+msgstr "ସ୍ଥୈତୀକ ଆଇ.ପି."
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:129
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:132
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
+msgid "Netmask"
+msgstr "ନେଟମାସ୍କ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:130
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:133
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
+msgid "Default gateway IP"
+msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଗେଟ-ୱେ ଆଇ.ପି."
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:131
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:134
+msgid "Read Device Bus ID"
+msgstr "ଉପକରଣ ବସ ପରିଚୟକୁ ପଢନ୍ତୁ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:132
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:135
+msgid "Data Device Bus ID"
+msgstr "ତଥ୍ୟଉପକରଣ ବସ ପରିଚୟ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:133
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:136
+msgid "Write Device Bus ID"
+msgstr "ଉପକରଣ ବସ ପରିଚୟକୁ ଲେଖନ୍ତୁ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:134
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:138
+msgid "Options"
+msgstr "ବିକଳ୍ପଗୁଡ଼ିକ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:135
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:139
+msgid "MAC Address"
+msgstr "MAC ଠିକଣାଗୁଡ଼ିକ"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCLcsInterface.py:148
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:153
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "ଠିକ ଅଛି"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:148
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:106
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:154
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "ବାତିଲ କରନ୍ତୁ"
+
+#: ../src/netconfpkg/tui/NCLcsInterface.py:150
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:156
+msgid "Devernet Configuration"
+msgstr "ଡେଭ-ନେଟ ବିନ୍ଯାସ"
+
 #: ../src/netconfpkg/tui/NCPluginDevices.py:58
 msgid "<New Device>"
 msgstr "<ନୂତନ ଉପକରଣ>"
@@ -3313,16 +3460,6 @@ msgstr "କେଉଁ ଉପକରଣ ପ୍ରକାରକୁ ଆପଣ ଯୋ�
 #: ../src/netconfpkg/tui/NCPluginDevices.py:66
 msgid "Add"
 msgstr "ଯୋଗ କରନ୍ତୁ"
-
-#: ../src/netconfpkg/tui/NCPluginDevices.py:66
-#: ../src/netconfpkg/tui/NCPluginDevices.py:106
-#: ../src/netconfpkg/tui/NCPluginDNS.py:69
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:154
-#: ../src/netconfpkg/tui/NCTcpIp.py:131
-msgid "Cancel"
-msgstr "ବାତିଲ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/tui/NCPluginDevices.py:72
 msgid "QETH"
@@ -3357,26 +3494,9 @@ msgstr "ତ୍ରୁତୀୟକ DNS"
 msgid "DNS search path"
 msgstr "DNS ଖୋଜା ପଥ"
 
-#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
-#. dynip.setCallback(useDynamicCheckBox)
-#: ../src/netconfpkg/tui/NCPluginDNS.py:68
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:153
-#: ../src/netconfpkg/tui/NCTcpIp.py:130
-msgid "Ok"
-msgstr "ଠିକ ଅଛି"
-
 #: ../src/netconfpkg/tui/NCPluginDNS.py:71 ../src/netconf_tui.py:256
 msgid "DNS configuration"
 msgstr "DNS ବିନ୍ଯାସ"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
-#: ../src/netconfpkg/tui/NCTcpIp.py:113
-msgid "Name"
-msgstr "ନାମ"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:69
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:69
@@ -3404,50 +3524,6 @@ msgstr "ISDN ବିନ୍ଯାସ"
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:72
 msgid "Modem Initstring"
 msgstr "ମୋଡେମ ପ୍ରାରମ୍ଭିକୀକରଣ ଖଣ୍ଡ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:130
-#: ../src/netconfpkg/tui/NCTcpIp.py:115
-msgid "Use DHCP"
-msgstr "DHCP ବ୍ଯବହାର କରନ୍ତୁ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:131
-#: ../src/netconfpkg/tui/NCTcpIp.py:116
-msgid "Static IP"
-msgstr "ସ୍ଥୈତୀକ ଆଇ.ପି."
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:132
-#: ../src/netconfpkg/tui/NCTcpIp.py:117
-msgid "Netmask"
-msgstr "ନେଟମାସ୍କ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:133
-#: ../src/netconfpkg/tui/NCTcpIp.py:118
-msgid "Default gateway IP"
-msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଗେଟ-ୱେ ଆଇ.ପି."
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:134
-msgid "Read Device Bus ID"
-msgstr "ଉପକରଣ ବସ ପରିଚୟକୁ ପଢନ୍ତୁ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:135
-msgid "Data Device Bus ID"
-msgstr "ତଥ୍ୟଉପକରଣ ବସ ପରିଚୟ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:136
-msgid "Write Device Bus ID"
-msgstr "ଉପକରଣ ବସ ପରିଚୟକୁ ଲେଖନ୍ତୁ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:138
-msgid "Options"
-msgstr "ବିକଳ୍ପଗୁଡ଼ିକ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:139
-msgid "MAC Address"
-msgstr "MAC ଠିକଣାଗୁଡ଼ିକ"
-
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:156
-msgid "Devernet Configuration"
-msgstr "ଡେଭ-ନେଟ ବିନ୍ଯାସ"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:119
 msgid "Primary DNS Server"
