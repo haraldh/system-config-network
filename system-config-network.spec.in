@@ -15,7 +15,6 @@ BuildRequires: gcc, desktop-file-utils, perl-XML-Parser, intltool
 Requires: %{name}-tui = %{version}-%{release}
 Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 Requires: usermode-gtk, xdg-utils, gnome-python2-gnome, gnome-python2-bonobo
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
 This is the GUI of the network configuration tool,
@@ -40,7 +39,6 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 %configure
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT install
 
 mkdir $RPM_BUILD_ROOT%{_datadir}/applications
@@ -58,12 +56,8 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/networking/profiles/default
 
 %find_lang %name
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 
 %files 
-%defattr(-,root,root,-)
 %doc COPYING 
 %{_datadir}/system-config-network/pixmaps
 %{_datadir}/system-config-network/netconfpkg/gui
@@ -75,7 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pixmaps/*
 
 %files -f %{name}.lang tui
-%defattr(-,root,root,-)
 %doc COPYING
 %dir %{_datadir}/system-config-network
 %doc %dir %{_datadir}/system-config-network/help
@@ -103,6 +96,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Tue Aug 07 2012 Jiri Popelka <jpopelka@redhat.com>  1.6.4-1
+- version 1.6.4
+  - Don't write DEVICE= line (rhbz#846081)
+  - add support for lcs devices
+  - Disable the Bind to MAC address option on bond slave devices (rhbz #504824)
+  - Do not remove GATEWAYDEV from /etc/sysconfig/network (rhbz #602688).
+  - Don't remove route-ethX on save (rhbz #501530)
+  - Establishing a QETH Connection chapter added to help
+  - use xdg-open instead of htmlview
+
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Tue Jun 28 2011 Jiri Popelka <jpopelka@redhat.com>  1.6.3-1
 - Support new IPADDRn/PREFIXn syntax
 - Removed conf/ConfPaswd:ConfPwO.getfreeid (rhbz #717120)
