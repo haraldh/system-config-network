@@ -551,6 +551,10 @@ class Device(Device_base):
         if conf.has_key('RESOLV_MODS'):
             del conf['RESOLV_MODS']
 
+        # no need to write DEVICE (RHBZ#846081)
+        if conf.has_key('DEVICE'):
+            del conf['DEVICE']
+
         conf.write()
 
         self.oldname = self.DeviceId
