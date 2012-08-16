@@ -48,10 +48,10 @@ class HwLcs(Hardware):
 
    def isType(self, hardware):
       if hardware.Type == LCS:
-         return true
+         return True
       if getHardwareType(hardware.Hardware) == LCS:
-         return true
-      return false
+         return True
+      return False
 
 def setHwLcsDialog(dialog):
    global _hwLcsDialog

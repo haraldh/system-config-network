@@ -21,7 +21,7 @@ import os
 from netconfpkg import NCHardwareList
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import (NETCONFDIR, PROGNAME, ETHERNET, 
-                                     TOKENRING, ISDN)
+                                     TOKENRING, ISDN, QETH)
 from netconfpkg.gui.GUI_functions import (GLADEPATH, load_icon,
                                           xml_signal_autoconnect)
 
