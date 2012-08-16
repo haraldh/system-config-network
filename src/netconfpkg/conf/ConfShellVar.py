@@ -6,7 +6,7 @@ from .Conf import Conf, ConfIndexError # pylint: disable-msg=W0403
 class ConfShellVar(Conf):
     def __init__(self, filename):
         self.nextreg = re.compile('^[\t ]*[A-Za-z_][A-Za-z0-9_]*=')
-        self.quotereg = re.compile('[ \t${}*@!~<>?;%^()#&=]')
+        self.quotereg = re.compile('[ \t${}*@!~<>?;%^()#&=\']')
         Conf.__init__(self, filename, commenttype='#',
                       separators='=', separator='=')
 
@@ -56,7 +56,7 @@ class ConfShellVar(Conf):
         missing = 1
         while self.findnextline('^[\t ]*' + varname + '='):
             if self.quotereg.search(value):
-                self.sedline('=.*', "='" + value + "'")
+                self.sedline('=.*', '="' + value + '"')
             else:
                 self.sedline('=.*', '=' + value)
             missing = 0
@@ -64,7 +64,7 @@ class ConfShellVar(Conf):
         if missing:
             self.seek(place)
             if self.quotereg.search(value):
-                self.insertline(varname + "='" + value + "'")
+                self.insertline(varname + '="' + value + '"')
             else:
                 self.insertline(varname + '=' + value)
 
