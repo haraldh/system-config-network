@@ -96,6 +96,10 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/networking/profiles/default
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Aug 16 2012 Jiri Popelka <jpopelka@redhat.com>  1.6.5-1
+- ConfShellVar(): use quotation marks instead of apostrophes
+  around variable names. (RHBZ#846081)
+
 * Tue Aug 07 2012 Jiri Popelka <jpopelka@redhat.com>  1.6.4-1
 - version 1.6.4
   - Don't write DEVICE= line (rhbz#846081)
